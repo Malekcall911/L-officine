@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>إضافة مرضى الربو</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f4f4f9;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        .container {
+            background-color: #ffffff;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            width: 400px;
+            padding: 20px;
+            text-align: center;
+        }
+        h1 {
+            color: #15B392;
+            margin-bottom: 30px;
+        }
+        input[type="text"], input[type="number"] {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+        button {
+            background-color: #15B392;
+            color: white;
+            padding: 10px;
+            width: 100%;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        button:hover {
+            background-color: #13A17D;
+        }
+        .checkmark {
+            display: none;
+            font-size: 30px;
+            color: green;
+            margin-top: 10px;
+            animation: fadeIn 0.5s forwards;
+        }
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+        .quiz-button {
+            display: none;
+            opacity: 0;
+            transition: opacity 0.5s;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h1>إضافة مريض بالربو</h1>
+        <input type="text" id="patientName" placeholder="اسم المريض" required>
+        <input type="text" id="patientName" placeholder="NUM CNAM" required>
+        <input type="number" id="patientAge" placeholder="العمر" required>
+        <input type="text" id="patientEmail" placeholder="الإيميل" required>
+        <input type="text" id="patientName" placeholder="مرض مزمن" required>
+        <button onclick="addPatient()">أضف المريض</button>
+        
+        <div id="checkmark" class="checkmark">✔</div>
+        <p id="successMessage" style="color: green; display: none;">تمت الإضافة بنجاح!</p>
+        
+        <a id="quizButton" href="quiz.html" class="quiz-button">القيام بالاختبار</a>
+    </div>
+
+    <script>
+        function addPatient() {
+            var name = document.getElementById('patientName').value;
+            var age = document.getElementById('patientAge').value;
+            var email = document.getElementById('patientEmail').value;
+           
+            if (name && age && email) {
+                document.getElementById('successMessage').style.display = "block";
+                
+                // Show checkmark animation
+                const checkmark = document.getElementById('checkmark');
+                checkmark.style.display = "block"; // Show checkmark
+                setTimeout(() => {
+                    checkmark.style.display = "none"; // Hide after 1 second
+
+                    // Show quiz button after checkmark
+                    const quizButton = document.getElementById('quizButton');
+                    quizButton.style.display = "inline"; // Make it inline to apply margin
+                    setTimeout(() => {
+                        quizButton.style.opacity = 1; // Fade in
+                    }, 10); // Short delay for transition effect
+                }, 1000);
+            } else {
+                alert("يرجى إدخال جميع البيانات");
+            }
+        }
+    </script>
+
+</body>
+</html>

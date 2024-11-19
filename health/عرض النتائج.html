@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>نتائج الاختبار</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #e0f7fa; /* Light cyan background */
+            text-align: center;
+            padding: 50px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        h1 {
+            font-size: 2.5em;
+            margin-bottom: 20px;
+            color: #00695c; /* Dark teal */
+        }
+
+        .result-box {
+            background-color: white;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+            width: 80%;
+            max-width: 600px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 2;
+        }
+
+        .gauge {
+            position: relative;
+            width: 100%;
+            height: 200px; /* Taller gauge */
+            margin: 20px auto;
+            background-color: #ffffff;
+            border-radius: 150px 150px 0 0;
+            overflow: hidden;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.15);
+        }
+
+        .gauge::before {
+            content: '';
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(to right, #ff5722, #ffeb3b, #4caf50);
+            border-radius: 150px 150px 0 0;
+            transform-origin: bottom;
+            animation: fill-animation 1s forwards;
+        }
+
+        @keyframes fill-animation {
+            0% { transform: rotate(-90deg); }
+            100% { transform: rotate(calc(180deg * var(--gauge-percentage))); }
+        }
+
+        .arrow {
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            width: 8px;
+            height: 100px; /* Taller arrow */
+            background-color: #00796b; /* Teal */
+            transform-origin: bottom;
+            transition: transform 0.5s ease;
+            border-radius: 5px;
+        }
+
+        .score {
+            font-size: 2.5em;
+            margin: 20px 0;
+            color: #333;
+        }
+
+        .feedback {
+            font-size: 1.5em;
+            color: #333;
+            margin-bottom: 30px;
+        }
+
+        .emoji {
+            font-size: 3em;
+        }
+
+        .scale-description {
+            display: flex;
+            justify-content: space-between;
+            font-size: 1.1em;
+            margin-top: 10px;
+            color: #333;
+        }
+
+        .scale-description span {
+            width: 33%;
+            font-weight: bold;
+        }
+
+        .message {
+            font-size: 1.2em;
+            margin-top: 20px;
+            color: #00796b;
+        }
+
+        .gauge-numbers {
+            position: absolute;
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            color: #333;
+            bottom: 10px; /* Positioning at the bottom */
+        }
+
+        .gauge-numbers span:nth-child(1) {
+            position: relative; /* For 25 */
+            left: 0;
+        }
+
+        .gauge-numbers span:nth-child(3) {
+            position: relative; /* For 0 */
+            right: 0;
+        }
+
+        .gauge-number-center {
+            position: absolute; /* For 12.5 */
+            left: 50%;
+            transform: translateX(-50%);
+            bottom: 60px; /* Adjusted to position it under the emojis */
+            font-size: 1.2em;
+            color: #333;
+        }
+
+        .additional-info {
+            font-size: 1.2em;
+            color: #555;
+            margin-top: 20px; /* Space above the text */
+        }
+
+        /* Decorative corners */
+        .corner {
+            position: absolute;
+            width: 100px;
+            height: 100px;
+            background: rgba(76, 175, 80, 0.5);
+            border-radius: 50%;
+            z-index: 1;
+        }
+
+        .corner.top-left { top: -50px; left: -50px; }
+        .corner.top-right { top: -50px; right: -50px; }
+        .corner.bottom-left { bottom: -50px; left: -50px; }
+        .corner.bottom-right { bottom: -50px; right: -50px; }
+    </style>
+</head>
+<body>
+
+    <h1>نتائج الاختبار</h1>
+
+    <div class="result-box">
+        <div class="score" href="score1"></div>
+        <div class="feedback">احتمال متوسط إنك معمل أكثر من اللازم على الفشاشة الزرقاء.</div>
+        
+        <div class="emoji">
+            <!-- Emoji reactions based on score -->
+            <span>😟</span>
+            <span style="display: none;">😐</span>
+            <span style="display: none;">😊</span>
+        </div>
+
+        <div class="gauge" style="--gauge-percentage: 0.6;">
+            <div class="arrow" id="arrow"></div>
+            <div class="gauge-numbers">
+                <span>25</span>
+                <span>0</span>
+            </div>
+            <div class="gauge-number-center">12.5</div> <!-- Center number positioned here -->
+        </div>
+
+        <div class="scale-description">
+            <span>خطر مرتفع</span>
+            <span>متوسط</span>
+            <span>جيد</span>
+        </div>
+
+        <div class="message">نتمنى لك الشفاء العاجل! تذكر دائمًا أن تسعى للحصول على العناية اللازمة.</div>
+        
+        <div class="additional-info">عدد بخاتك بالفشفاشة الزرقة >1</div> <!-- Added info -->
+    </div>
+
+    <!-- Decorative corners -->
+    <div class="corner top-left"></div>
+    <div class="corner top-right"></div>
+    <div class="corner bottom-left"></div>
+    <div class="corner bottom-right"></div>
+
+    <script>
+        // Set the score here
+        let score = 15  ; // Change this to the actual score from the quiz
+        const maxScore = 25; // Maximum score
+        const arrow = document.getElementById('arrow');
+        const queryString = window.location.search;
+
+// Create a URLSearchParams object
+    const urlParams = new URLSearchParams(queryString);
+
+// Get the value of 'name' and 'age' parameters
+        score = urlParams.get('score');
+        const emojiSpans = document.querySelectorAll('.emoji span');
+
+        // Calculate the percentage for the gauge based on the score
+        const percentage = score / maxScore; // Value between 0 and 1
+        document.querySelector('.gauge').style.setProperty('--gauge-percentage', percentage);
+
+        // Calculate the angle for the arrow based on the score
+        const angle = (percentage * 180) - 90; // Scale from -90 to 90 degrees
+
+        // Set the transform for the arrow
+        arrow.style.transform = `rotate(${angle}deg)`;
+
+        const scoreDiv = document.querySelector('.score');
+
+// Add text inside the div
+        scoreDiv.innerText = "Your score is " + score;  // Or
+        // Show the appropriate emoji based on the score
+        if (score > 18) {
+            emojiSpans[0].style.display = 'inline'; // 😟
+        } else if (score > 11) {
+            emojiSpans[1].style.display = 'inline'; // 😐
+        } else {
+            emojiSpans[2].style.display = 'inline'; // 😊
+        }
+    </script>
+
+</body>
+</html>

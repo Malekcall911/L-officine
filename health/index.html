@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Dashboard</title>
+    <link rel="shortcut icon" href="./images/logo.png">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Sharp" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+
+    <style>
+        body {
+            position: relative;
+        }
+        .plus-button, .chat-button {
+            position: fixed;
+            bottom: 20px;
+            width: 60px;
+            height: 60px;
+            background-color: green;
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 30px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            cursor: pointer;
+            animation: pulse 2s infinite;
+            text-decoration: none; /* Remove underline */
+        }
+
+        .plus-button {
+            right: 90px; /* Position for plus button */
+        }
+
+        .chat-button {
+            right: 90px; /* Position for chat button */
+            background-color:   rgb(0, 255, 242); /* Different color for differentiation */
+        }
+
+        @keyframes pulse {
+            0% {
+                transform: scale(1);
+            }
+            50% {
+                transform: scale(1.1);
+            }
+            100% {
+                transform: scale(1);
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="images" title="Forum De L'officine">
+            <img src="pha.png" alt="" class="logo-img">
+        </div>
+        <div class="navbar">
+            <a href="index.html" class="active">
+                <span class="material-icons-sharp">home</span>
+                <h3>Home</h3>
+            </a>
+            <a href="timetable.html" onclick="timeTableAll()">
+                <span class="material-icons-sharp">today</span>
+                <h3>Time Table</h3>
+            </a> 
+            <a href="exam.html">
+                <span class="material-icons-sharp">grid_view</span>
+                <h3>Review</h3>
+            </a>
+            <a href="password.html">
+                <span class="material-icons-sharp">password</span>
+                <h3>Change Password</h3>
+            </a>
+            <a href="#logout">
+                <span class="material-icons-sharp" onclick="">logout</span>
+                <h3>Logout</h3>
+            </a>
+        </div>
+        <div id="profile-btn">
+            <span class="material-icons-sharp">person</span>
+        </div>
+        <div class="theme-toggler">
+            <span class="material-icons-sharp active">light_mode</span>
+            <span class="material-icons-sharp">dark_mode</span>
+        </div>
+    </header>
+    <div class="container">
+        <aside>
+            <div class="profile">
+                <div class="top">
+                    <div class="profile-photo">
+                        <img src="phaa.png" alt="">
+                    </div>
+                    <div class="info">
+                        <p>Hey, <b>Sami</b></p>
+                        <small class="text-muted">12102030</small>
+                    </div>
+                </div>
+                <div class="about">
+                    <h5>Pharmacie</h5>
+                    <p>Pharmacie de nuit Boumhal</p>
+                    <h5>Birthday Date</h5>
+                    <p>29-Feb-1989</p>
+                    <h5>Contact</h5>
+                    <p>1234567890</p>
+                    <h5>Email</h5>
+                    <p>unknown@gmail.com</p>
+                    <h5>Address</h5>
+                    <p>Boumhal Ben Arous</p>
+                </div>
+            </div>
+        </aside>
+
+        <main>
+            <h1>Attendance</h1>
+            <div class="subjects">
+                <div class="eg">
+                    <span class="material-icons-sharp">person_outline</span>
+                    <h3>Sami Belgecem</h3>
+                    <h2>18/25</h2>
+                    <div class="progress">
+                        <svg><circle cx="38" cy="38" r="36"></circle></svg>
+                        <div class="number"><p>70%</p></div>
+                    </div>
+                    <small class="text-muted">In the last visit</small>
+                </div>
+                <div class="mth">
+                    <span class="material-icons-sharp">person_outline</span>
+                    <h3>Mouhamed Amine selmi</h3>
+                    <h2>22/25</h2>
+                    <div class="progress">
+                        <svg><circle cx="38" cy="38" r="36"></circle></svg>
+                        <div class="number"><p>93%</p></div>
+                    </div>
+                    <small class="text-muted">In the last visit</small>
+                </div>
+                <div class="cs">
+                    <span class="material-icons-sharp">person_outline</span>
+                    <h3>Mohamed amir shourou</h3>
+                    <h2>19/25</h2>
+                    <div class="progress">
+                        <svg><circle cx="38" cy="38" r="36"></circle></svg>
+                        <div class="number"><p>81%</p></div>
+                    </div>
+                    <small class="text-muted">In the last visit</small>
+                </div>
+                <div class="cg">
+                    <span class="material-icons-sharp">person_outline</span>
+                    <h3>Malek Blaiech</h3>
+                    <h2>23/25</h2>
+                    <div class="progress">
+                        <svg><circle cx="38" cy="38" r="36"></circle></svg>
+                        <div class="number"><p>93%</p></div>
+                    </div>
+                    <small class="text-muted">In the last visit</small>
+                </div>
+                <div class="net">
+                    <span class="material-icons-sharp">router</span>
+                    <h3>Ahmed Mourou</h3>
+                    <h2>22/25</h2>
+                    <div class="progress">
+                        <svg><circle cx="38" cy="38" r="36"></circle></svg>
+                        <div class="number"><p>92%</p></div>
+                    </div>
+                    <small class="text-muted">In the last visit</small>
+                </div>
+            </div>
+
+            <div class="timetable" id="timetable">
+                <div>
+                    <span id="prevDay">&lt;</span>
+                    <h2>Today's Timetable</h2>
+                    <span id="nextDay">&gt;</span>
+                </div>
+                <span class="closeBtn" onclick="timeTableAll()">X</span>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Time</th>
+                            <th>Room No.</th>
+                            <th>Subject</th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody></tbody>
+                </table>
+            </div>
+        </main>
+
+        <div class="right">
+            <div class="announcements">
+                <h2>Announcements</h2>
+                <div class="updates">
+                    <div class="message">
+                        <p> <b>Academic</b> Summer training internship with Live Projects.</p>
+                        <small class="text-muted">2 Minutes Ago</small>
+                    </div>
+                    <div class="message">
+                        <p> <b>Co-curricular</b> Global internship opportunity by Student organization.</p>
+                        <small class="text-muted">10 Minutes Ago</small>
+                    </div>
+                    <div class="message">
+                        <p> <b>Review</b> Instructions for Mid Term Examination.</p>
+                        <small class="text-muted">Yesterday</small>
+                    </div>
+                </div>
+            </div>
+
+            <div class="leaves">
+                <h2>The pharmacists</h2>
+                <div class="teacher">
+                    <div class="profile-photo"><img src="d1.jpg" alt=""></div>
+                    <div class="info">
+                        <h3>Dr.Harbawi</h3>
+                        <small class="text-muted">Full Day</small>
+                    </div>
+                </div>
+                <div class="teacher">
+                    <div class="profile-photo"><img src="d2.webp" alt=""></div>
+                    <div class="info">
+                        <h3>Dr.Weslati</h3>
+                        <small class="text-muted">Half Day</small>
+                    </div>
+                </div>
+                <div class="teacher">
+                    <div class="profile-photo"><img src="d3.jpg" alt=""></div>
+                    <div class="info">
+                        <h3>Dr.Trabelsi</h3>
+                        <small class="text-muted">Full Day</small>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <a href="patient.html" class="plus-button">
+        <span class="material-icons-sharp">add</span>
+    </a>
+
+    <!-- Replacing the chat button with the script tags -->
+    <script src="https://cdn.botpress.cloud/webchat/v2.2/inject.js"></script>
+    <script src="https://files.bpcontent.cloud/2024/10/20/19/20241020195537-QUFU4H1L.js"></script>
+
+    <script src="timeTable.js"></script>
+    <script src="app.js"></script>
+    
+</body>
+</html>

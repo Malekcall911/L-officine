@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>جدول الاستعمال</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 20px;
+        }
+
+        h2 {
+            text-align: center;
+            color: #4CAF50;
+        }
+
+        .container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .table-container {
+            width: 70%;
+            border-collapse: collapse;
+            background-color: #fff;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+            margin-right: 20px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        th, td {
+            border: 1px solid #ddd;
+            padding: 12px;
+            text-align: center;
+        }
+
+        th {
+            background-color: #4CAF50;
+            color: white;
+        }
+
+        td {
+            background-color: #f9f9f9;
+            color: #333;
+        }
+
+        tr:nth-child(even) td {
+            background-color: #e0e0e0;
+        }
+
+        tr:hover td {
+            background-color: #d3ffd3;
+        }
+
+        /* Green gradient for headers */
+        th {
+            background: linear-gradient(45deg, #4CAF50, #3e8e41);
+            color: white;
+            font-size: 16px;
+        }
+
+        /* Smooth green color for table borders */
+        table, th, td {
+            border-color: #8bc34a;
+        }
+
+        /* Right-side description box */
+        .description-box {
+            width: 30%;
+            background-color: #f9f9f9;
+            padding: 20px;
+            border: 1px solid #ddd;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .description-box ul {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        .description-box li {
+            background-color: #e8f5e9;
+            margin: 10px 0;
+            padding: 10px;
+            border-radius: 8px;
+            border: 1px solid #8bc34a;
+            color: #333;
+        }
+
+        /* Responsive table for smaller screens */
+        @media screen and (max-width: 768px) {
+            .container {
+                flex-direction: column;
+                align-items: stretch;
+            }
+
+            .table-container, .description-box {
+                width: 100%;
+                margin-right: 0;
+            }
+        }
+
+        /* Adding spacing around the paragraph */
+        p {
+            text-align: center;
+            margin-top: 20px;
+            font-size: 14px;
+            color: #666;
+        }
+    </style>
+</head>
+<body>
+
+<h2>جدول الاستعمال</h2>
+
+<div class="container">
+    <!-- Table Section -->
+    <div class="table-container">
+        <table>
+            <thead>
+                <tr>
+                    <th>12</th>
+                    <th>11</th>
+                    <th>10</th>
+                    <th>9</th>
+                    <th>8</th>
+                    <th>7</th>
+                    <th>6</th>
+                    <th>5</th>
+                    <th>4</th>
+                    <th>3</th>
+                    <th>2</th>
+                    <th>1</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>2400</td>
+                    <td>2200</td>
+                    <td>2000</td>
+                    <td>1800</td>
+                    <td>1600</td>
+                    <td>1400</td>
+                    <td>1200</td>
+                    <td>1000</td>
+                    <td>800</td>
+                    <td>600</td>
+                    <td>400</td>
+                    <td>200</td>
+                </tr>
+                <tr>
+                    <td>46</td>
+                    <td>42</td>
+                    <td>39</td>
+                    <td>35</td>
+                    <td>31</td>
+                    <td>27</td>
+                    <td>23</td>
+                    <td>19</td>
+                    <td>15</td>
+                    <td>12</td>
+                    <td>8</td>
+                    <td>4</td>
+                </tr>
+                <tr>
+                    <td>7</td>
+                    <td>&lt;6</td>
+                    <td>6</td>
+                    <td>5</td>
+                    <td>&lt;4</td>
+                    <td>4</td>
+                    <td>&lt;3</td>
+                    <td>3</td>
+                    <td>2</td>
+                    <td>2</td>
+                    <td>1</td>
+                    <td>&lt;1</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <!-- Right Section Description -->
+    <div class="description-box">
+        <ul>
+            <li>عدد من فشاشة زرقاء استعمالت في عام</li>
+            <li>عدد النفقات المستعملة في العام</li>
+            <li>عدد النفقات المستعملة في الجمعة</li>
+            <li>عدد النفقات المستعملة في اليوم</li>
+        </ul>
+    </div>
+</div>
+
+<p>* زيادة في استعمال {استعمالات النفقات الزرقاء}</p>
+
+</body>
+</html>
